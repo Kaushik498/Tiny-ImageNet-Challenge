@@ -10,7 +10,7 @@ channels = 3
 n_inputs = height * width * channels
 n_outputs = 200 # 200 different classes
 
-# reset_graph()
+tf.reset_default_graph()
 
 X = tf.placeholder(tf.float32, shape=[-1, height, width, channels] )
 y = tf.placeholder(tf.int32, shape=[None] )
@@ -62,5 +62,5 @@ with tf.Session() as sess:
         acc_test = accuracy.eval(feed_dict={X: val_images, y: val_labels_encoded})
         print(epoch, "Train accuracy:", acc_train, "Test accuracy:", acc_test)
 
-        save_path = saver.save(sess, "./tiny_imagenet")
+        save_path = saver.save(sess, "./ti_result")
 
